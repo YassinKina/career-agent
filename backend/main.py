@@ -1,9 +1,9 @@
 # Import core components from the agents framework and your own career agent module
 from agents import set_default_openai_api, Agent, Runner
-from career_agent import CareerAgent
+from backend.career_agent import CareerAgent
 import os
 from dotenv import load_dotenv
-from logger import logger
+from backend.logger import logger
 
 # Load environment variables from a .env file
 load_dotenv()

@@ -1,8 +1,11 @@
 import pytest
-import asyncio
-from career_agent import CareerAgent
+import os, sys
+sys.path.append(os.getenv("PYTHONPATH"))
+
+from backend.career_agent import CareerAgent
+from backend.utils import log_current_function
+
 from logger import logger
-from utils import log_current_function
 
 # Test to ensure basic input produces a valid, relevant response
 @pytest.mark.asyncio

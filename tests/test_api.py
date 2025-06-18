@@ -1,8 +1,9 @@
-import pytest
 from fastapi.testclient import TestClient
-from main import app  # Import the FastAPI app instance from your main module
-from utils import log_current_function
 
+import os, sys
+sys.path.append(os.getenv("PYTHONPATH"))
+from backend.main import app  # Import the FastAPI app instance from your main module
+from backend.utils import log_current_function
 
 
 # Test the /ask endpoint with a valid input payload

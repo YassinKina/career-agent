@@ -1,11 +1,8 @@
 # Import necessary components from the agents framework and standard Python libraries
 from agents import Agent, Runner, function_tool, WebSearchTool
-import sys
 import os
-from logger import logger
-from fastapi import FastAPI, Request
-from pydantic import BaseModel
-import asyncio
+from backend.logger import logger
+
 
 # Define the main class responsible for managing the AI agents
 class CareerAgent():
