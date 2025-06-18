@@ -3,6 +3,7 @@ from agents import set_default_openai_api, Agent, Runner
 from career_agent import CareerAgent
 import os
 from dotenv import load_dotenv
+from logger import logger
 
 # Load environment variables from a .env file
 load_dotenv()
@@ -30,8 +31,11 @@ class QueryRequest(BaseModel):
 # Define a POST endpoint that takes in user input and returns the agent's response
 @app.post("/ask")
 async def ask_agent(query: QueryRequest):
+    logger.info(f"API received input: {query.input}")
     # Pass the input to the career agent and await the result
     result = await career_agent.run_agent(query.input)
+
+    logger.info("API returning result")
     
     # Return the result as a JSON response
     return {"response": result}

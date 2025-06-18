@@ -1,10 +1,14 @@
 import pytest
 import asyncio
 from career_agent import CareerAgent
+from logger import logger
+from utils import log_current_function
 
 # Test to ensure basic input produces a valid, relevant response
 @pytest.mark.asyncio
 async def test_run_agent_basic_response():
+    log_current_function()
+    
     agent = CareerAgent()
     input_text = "I like problem solving and remote work."
     response = await agent.run_agent(input_text)
@@ -15,6 +19,7 @@ async def test_run_agent_basic_response():
 # Test to verify the guardrail catches off-topic input (e.g., unrelated to careers)
 @pytest.mark.asyncio
 async def test_guardrail_response():
+    log_current_function()
     agent = CareerAgent()
     response = await agent.run_agent("Tell me about sports")
     lower_response = response.lower()
@@ -28,6 +33,7 @@ async def test_guardrail_response():
 # Test how the agent handles an empty string input
 @pytest.mark.asyncio
 async def test_empty_input():
+    log_current_function()
     agent = CareerAgent()
     response = await agent.run_agent("")
     assert response is not None
@@ -36,6 +42,7 @@ async def test_empty_input():
 # Test that passing `None` as input raises a ValueError (input validation)
 @pytest.mark.asyncio
 async def test_invalid_input():
+    log_current_function()
     agent = CareerAgent()
     with pytest.raises(ValueError):
         await agent.run_agent(None)  # Should raise ValueError due to None input
@@ -43,6 +50,7 @@ async def test_invalid_input():
 # Test that passing a non-string object raises a TypeError
 @pytest.mark.asyncio
 async def test_invalid_input_obj():
+    log_current_function()
     agent = CareerAgent()
 
     class Cat():

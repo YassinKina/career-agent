@@ -1,11 +1,13 @@
 import pytest
 from fastapi.testclient import TestClient
 from main import app  # Import the FastAPI app instance from your main module
+from utils import log_current_function
 
 
 
 # Test the /ask endpoint with a valid input payload
 def test_ask_endpoint(client):
+    log_current_function()
     payload = {
         "input": "What career suits someone who likes math?"
     }
@@ -17,7 +19,8 @@ def test_ask_endpoint(client):
     assert len(data["response"]) > 0    # Response should not be empty
 
 # Test the /ask endpoint with an empty string as input
-def test_ask_endpoint_empty_input(client):
+def test_ask_endpoint_empty_input(client): #client is passed in through conftest file
+    log_current_function()
     payload = {"input": ""}
     response = client.post("/ask", json=payload)
     assert response.status_code == 200  # Still expect a 200 OK
@@ -26,5 +29,6 @@ def test_ask_endpoint_empty_input(client):
 
 # Test the /ask endpoint with missing 'input' key in payload
 def test_ask_endpoint_missing_input_key(client):
+    log_current_function()
     response = client.post("/ask", json={})
     assert response.status_code == 422  # Expect validation error (Unprocessable Entity)

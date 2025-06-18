@@ -2,6 +2,7 @@
 from agents import Agent, Runner, function_tool, WebSearchTool
 import sys
 import os
+from logger import logger
 from fastapi import FastAPI, Request
 from pydantic import BaseModel
 import asyncio
@@ -9,6 +10,7 @@ import asyncio
 # Define the main class responsible for managing the AI agents
 class CareerAgent():
     def __init__(self):
+        logger.info("Initializing CareerAgent")
         # Instantiate the main career agent with a specific model and behavior
         self.career_agent = Agent(
               name="CareerAgent",  # Name of the agent
@@ -32,6 +34,7 @@ class CareerAgent():
     
     # Run the agent workflow with user input
     async def run_agent(self, input: str):
+        logger.info(f"Received input: {input}")
         # Validate input: ensure it's not None
         if input is None:
             raise ValueError("Input cannot be None")
@@ -45,6 +48,7 @@ class CareerAgent():
         # Run the guardrail agent with the input; it will route or process accordingly
         result = await Runner.run(self.guardrail, input)
 
+        logger.info(f"Final result: {result.final_output}")
         # Return only the final output from the agent interaction
         return result.final_output
 
