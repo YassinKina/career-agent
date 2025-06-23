@@ -1,4 +1,4 @@
-# 🧠 AI Career Advisor Agent
+# 🧠 AI Career Advisor Agent (Still in Development)
 
 An interactive, memory-enabled AI career coach built with OpenAI's GPT API, LangChain, and a React front end. This agent helps users explore career paths based on their interests, strengths, and values through a natural conversation.
 
