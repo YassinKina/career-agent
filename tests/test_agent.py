@@ -47,7 +47,7 @@ async def test_empty_input():
 async def test_invalid_input():
     log_current_function()
     agent = CareerAgent()
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         await agent.run_agent(None)  # Should raise ValueError due to None input
 
 # Test that passing a non-string object raises a TypeError

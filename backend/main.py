@@ -1,41 +1,39 @@
-# Import core components from the agents framework and your own career agent module
-from agents import set_default_openai_api, Agent, Runner
-from backend.career_agent import CareerAgent
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from career_agent import CareerAgent
+from logger import logger
 import os
 from dotenv import load_dotenv
-from backend.logger import logger
 
-# Load environment variables from a .env file
 load_dotenv()
 
-# Retrieve the OpenAI API key from environment variables
-api_key = os.getenv("OPENAI_API_KEY")
-
-# Set the default OpenAI API key for agent interactions
-set_default_openai_api(api_key)
-
-# Import FastAPI and Pydantic for building and validating the API
-from fastapi import FastAPI, Request
-from pydantic import BaseModel
-
-# Initialize FastAPI app instance
+# Initialize FastAPI app
 app = FastAPI()
 
-# Create an instance of the CareerAgent class to handle queries
+# Enable CORS for localhost:3000 (React dev server)
+origins = [
+    "http://localhost:3000",
+    # Add other origins if you deploy frontend elsewhere
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Or use ["*"] to allow all (not recommended for production)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 career_agent = CareerAgent()
 
-# Define the expected request body schema using Pydantic
 class QueryRequest(BaseModel):
-    input: str  # The user's query or career-related input
+    input: str
 
-# Define a POST endpoint that takes in user input and returns the agent's response
-@app.post("/ask")
+@app.post("/api/chat")
 async def ask_agent(query: QueryRequest):
+    print("Agent has been asked")
     logger.info(f"API received input: {query.input}")
-    # Pass the input to the career agent and await the result
     result = await career_agent.run_agent(query.input)
-
     logger.info("API returning result")
-    
-    # Return the result as a JSON response
     return {"response": result}

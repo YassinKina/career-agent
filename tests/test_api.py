@@ -12,7 +12,7 @@ def test_ask_endpoint(client):
     payload = {
         "input": "What career suits someone who likes math?"
     }
-    response = client.post("/ask", json=payload)
+    response = client.post("/api/chat", json=payload)
     assert response.status_code == 200  # Expect HTTP 200 OK
     data = response.json()
     assert "response" in data           # Ensure 'response' key is present
@@ -23,7 +23,7 @@ def test_ask_endpoint(client):
 def test_ask_endpoint_empty_input(client): #client is passed in through conftest file
     log_current_function()
     payload = {"input": ""}
-    response = client.post("/ask", json=payload)
+    response = client.post("/api/chat", json=payload)
     assert response.status_code == 200  # Still expect a 200 OK
     json_data = response.json()
     assert "response" in json_data      # Should still receive a response key
@@ -31,5 +31,5 @@ def test_ask_endpoint_empty_input(client): #client is passed in through conftest
 # Test the /ask endpoint with missing 'input' key in payload
 def test_ask_endpoint_missing_input_key(client):
     log_current_function()
-    response = client.post("/ask", json={})
+    response = client.post("/api/chat", json={})
     assert response.status_code == 422  # Expect validation error (Unprocessable Entity)
