@@ -1,8 +1,8 @@
-🧠 AI Career Advisor Agent
+# 🧠 AI Career Advisor Agent
 
 An interactive, memory-enabled AI career coach built with OpenAI's GPT API, LangChain, and a React front end. This agent helps users explore career paths based on their interests, strengths, and values through a natural conversation.
 
-🚀 Features
+## 🚀 Features
 ✅ Career-focused guidance powered by GPT-4o
 
 ✅ Guardrails to keep conversations on-topic
@@ -15,7 +15,7 @@ An interactive, memory-enabled AI career coach built with OpenAI's GPT API, Lang
 
 ✅ Tool-augmented responses using custom career suggestion functions
 
-🧱 Tech Stack
+## 🧱 Tech Stack
 Frontend
 
 React (via Vite)
@@ -34,8 +34,8 @@ Custom agents with agents framework
 
 
 
-🧪 Getting Started
-🔧 Backend Setup
+## 🧪 Getting Started
+### 🔧 Backend Setup
 Clone the repo
 
 bash
@@ -71,7 +71,7 @@ Edit
 uvicorn main:app --reload
 Backend runs at: http://localhost:8000
 
-💻 Frontend Setup
+## 💻 Frontend Setup
 Open a new terminal and navigate to the frontend folder.
 
 bash
@@ -87,7 +87,7 @@ Edit
 npm run dev
 Frontend runs at: http://localhost:5173
 
-📡 API Endpoint
+## 📡 API Endpoint
 Method	Endpoint	Description
 POST	/ask	Send user input to the AI agent
 POST	/reset	 Reset conversation (Coming Soon)
@@ -101,7 +101,7 @@ POST /ask
 {
   "input": "I enjoy working with animals and being outdoors."
 }
-🤖 Agent Logic Overview
+## 🤖 Agent Logic Overview
 GuardrailAgent filters off-topic questions.
 
 CareerAgent gives career advice based on user interests.
@@ -110,14 +110,14 @@ LangChain Memory stores multi-turn context.
 
 Custom tools like get_career() allow the agent to return structured results.
 
-📈 Example Use Cases
+## 📈 Example Use Cases
 Students exploring majors or fields
 
 Career changers seeking direction
 
 Job seekers looking for role-fit guidance
 
-🛠 Future Improvements
+## 🛠 Future Improvements
  Store chat history in a database
 
  Add voice input/output
