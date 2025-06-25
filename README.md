@@ -38,54 +38,45 @@ Custom agents with agents framework
 ### 🔧 Backend Setup
 Clone the repo
 
-bash
-Copy
-Edit
-git clone https://github.com/your-username/ai-career-agent
-cd ai-career-agent
+
+```bash 
+  git clone https://github.com/your-username/ai-career-agent
+  cd ai-career-agent
+
 Create a virtual environment
 
-bash
-Copy
-Edit
-python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
+
+```bash 
+  python -m venv venv
+  source venv/bin/activate  # or venv\Scripts\activate on Windows
+
 Install dependencies
 
-bash
-Copy
-Edit
-pip install -r requirements.txt
-Create .env file
+```bash 
+  pip install -r requirements.txt
 
-env
-Copy
-Edit
+Create .env file
 OPENAI_API_KEY=your-key-here
 MODEL_NAME=gpt-4o
 Run FastAPI server
 
-bash
-Copy
-Edit
-uvicorn main:app --reload
+```bash 
+  uvicorn main:app --reload
+
 Backend runs at: http://localhost:8000
 
 ## 💻 Frontend Setup
 Open a new terminal and navigate to the frontend folder.
 
-bash
-Copy
-Edit
-cd frontend
-npm install
+```bash 
+  cd frontend
+  npm install
+
 Run the React app
 
-bash
-Copy
-Edit
-npm run dev
-Frontend runs at: http://localhost:5173
+```bash 
+  npm run dev
+  Frontend runs at: http://localhost:5173
 
 ## 📡 API Endpoint
 Method	Endpoint	Description
