@@ -16,104 +16,45 @@ An interactive, memory-enabled AI career coach built with OpenAI's GPT API, Lang
 ✅ Tool-augmented responses using custom career suggestion functions
 
 ## 🧱 Tech Stack
-Frontend
+### Frontend
+- React (via Vite)
+- Axios
 
-React (via Vite)
-
-Axios
-
-Backend
-
-FastAPI (Python)
-
-OpenAI API
-
-LangChain
-
-Custom agents with agents framework
-
-
+### Backend
+- FastAPI (Python)
+- OpenAI API
+- LangChain
+- Custom agents with agents framework
 
 ## 🧪 Getting Started
 ### 🔧 Backend Setup
 Clone the repo
 
+```bash
+git clone https://github.com/your-username/ai-career-agent
+cd ai-career-agent
 
-```bash 
-  git clone https://github.com/your-username/ai-career-agent
-  cd ai-career-agent
+python -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate on Windows
 
+pip install -r requirements.txt
+```
+💻 Frontend Setup
 
-Create a virtual environment
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
+| Method | Endpoint | Description                      |
+| ------ | -------- | -------------------------------- |
+| POST   | /ask     | Send user input to the AI agent  |
+| POST   | /reset   | Reset conversation (Coming Soon) |
 
-```bash 
-  python -m venv venv
-  source venv/bin/activate  # or venv\Scripts\activate on Windows
-
-Install dependencies
-
-```bash 
-  pip install -r requirements.txt
-
-Create .env file
-OPENAI_API_KEY=your-key-here
-MODEL_NAME=gpt-4o
-Run FastAPI server
-
-```bash 
-  uvicorn main:app --reload
-
-Backend runs at: http://localhost:8000
-
-## 💻 Frontend Setup
-Open a new terminal and navigate to the frontend folder.
-
-```bash 
-  cd frontend
-  npm install
-
-Run the React app
-
-```bash 
-  npm run dev
-  Frontend runs at: http://localhost:5173
-
-## 📡 API Endpoint
-Method	Endpoint	Description
-POST	/ask	Send user input to the AI agent
-POST	/reset	 Reset conversation (Coming Soon)
-
-Example request:
-
-json
-Copy
-Edit
+Example Request
 POST /ask
 {
   "input": "I enjoy working with animals and being outdoors."
 }
-## 🤖 Agent Logic Overview
-GuardrailAgent filters off-topic questions.
 
-CareerAgent gives career advice based on user interests.
-
-LangChain Memory stores multi-turn context.
-
-Custom tools like get_career() allow the agent to return structured results.
-
-## 📈 Example Use Cases
-Students exploring majors or fields
-
-Career changers seeking direction
-
-Job seekers looking for role-fit guidance
-
-## 🛠 Future Improvements
- Store chat history in a database
-
- Add voice input/output
-
- Support multi-language interactions
-
- Admin dashboard for analytics
